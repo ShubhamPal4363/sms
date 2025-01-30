@@ -1,0 +1,15 @@
+.navbar {
+    background-color: #27273d !important;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.btn-navy-blue{
+    background-color:#27273d !important;
+    border: #27273d !important;
+    color: #fff;
+}
+
+.btn-navy-blue:hover{
+    color: #fff;
+}
