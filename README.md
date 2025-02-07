@@ -1,70 +1,201 @@
-# Getting Started with Create React App
+# SMS Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an SMS management website that allows users to add contacts, groups, and libraries, as well as send messages to individuals or groups. The application provides a user-friendly interface for managing contacts, creating and sending messages, and organizing them into groups or libraries. The app also allows users to send emails directly.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Add Contact**: Allows users to input details like name, mobile number, and email for new contacts.
+- **Add Group**: Lets users create groups by providing a group name.
+- **Add Library**: Users can add predefined libraries to organize messages or content.
+- **Add Message**: Users can compose and store messages to be sent later.
+- **Show Contact**: Displays all the added contacts with their details (name, mobile, email).
+- **Show Group**: Displays all created groups.
+- **Show Library**: Displays all libraries with stored messages.
+- **Show Message**: Displays stored messages, and users can edit or send them.
+- **Send Email**: Users can send messages via email to one or more recipients.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: HTML, CSS, JavaScript & React
+- **Backend**: Firebase (Firestore for database management)
+- **Styling**: Bootstrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure that you have the following installed:
 
-### `npm run build`
+- **Node.js** (LTS version recommended)  
+  Download and install from [Node.js website](https://nodejs.org/)
+  
+- **npm** (comes with Node.js)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Firebase CLI**  
+  To install Firebase CLI, run the following:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ```bash
+  npm install -g firebase-tools
+  ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Firebase Setup
 
-### `npm run eject`
+1. **Create a Firebase Project**:
+   - Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
+   
+2. **Firebase Configuration**:
+   - Go to your Firebase project settings and get your Firebase config object.
+   - This will contain your API key, auth domain, project ID, storage bucket, etc.
+   - Add your Firebase configuration in the `.env` file like so:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+     ```bash
+     REACT_APP_FIREBASE_API_KEY=your-api-key
+     REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+     REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+     REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+     REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+     REACT_APP_FIREBASE_APP_ID=your-app-id
+     ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Install Firebase SDK**:
+   In your project directory, run the following to install the Firebase SDK:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install firebase
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Set up Firebase Firestore**:
+   - Enable Firestore in the Firebase console under the "Firestore Database" section.
+   - You can now use Firestore to store and retrieve contacts, groups, messages, and libraries.
 
-## Learn More
+5. **Firebase Hosting** (Optional):
+   - If you're deploying the website to Firebase Hosting, initialize Firebase in your project directory:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     ```bash
+     firebase init
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - Select **Hosting** and follow the setup process to deploy your app.
 
-### Code Splitting
+### Installation Steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Clone the repository**:
 
-### Analyzing the Bundle Size
+   ```bash
+   git clone https://github.com/your-username/sms-website.git
+   cd sms-website
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Install dependencies**:
 
-### Making a Progressive Web App
+   Run the following command to install the required dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   npm install
+   ```
 
-### Advanced Configuration
+3. **Firebase Configuration**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   Ensure that the `.env` file is properly configured with your Firebase credentials (as shown in the Firebase setup section).
 
-### Deployment
+4. **Start the development server**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   Run the following command to start the application:
 
-### `npm run build` fails to minify
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   The application will be available at `http://localhost:3000/`.
+
+## Pages and Features
+
+### 1. **Add Contact**
+   - Input fields for **name**, **mobile number**, and **email**.
+   - Saves new contacts to Firestore.
+
+### 2. **Add Group**
+   - A single input field to create a group (group name).
+   - Stores groups in Firestore and allows users to manage contacts within groups.
+
+### 3. **Add Library**
+   - Allows the user to create and manage libraries.
+   - Users can save predefined message templates in Firestore.
+
+### 4. **Add Message**
+   - Allows the user to compose and store messages.
+   - Messages are saved in Firestore and can be retrieved or edited later.
+
+### 5. **Show Contact**
+   - Displays a list of all contacts stored in Firestore with their details (name, mobile number, email).
+
+### 6. **Show Group**
+   - Displays all created groups stored in Firestore.
+
+### 7. **Show Library**
+   - Displays all predefined libraries with saved messages stored in Firestore.
+
+### 8. **Show Message**
+   - Displays all stored messages and allows the user to view, edit, or delete them.
+
+### 9. **Send Email**
+   - Users can select contacts or groups and send messages via email.
+   - You can use **Nodemailer** or **Firebase Functions** to send emails to recipients.
+
+## Folder Structure
+
+```
+/sms-website
+├── /public
+│   └── index.html
+├── /src
+│   ├── /components
+│   │   ├── AddContact.js
+│   │   ├── AddGroup.js
+│   │   ├── AddLibrary.js
+│   │   ├── AddMessage.js
+│   │   ├── ShowContact.js
+│   │   ├── ShowGroup.js
+│   │   ├── ShowLibrary.js
+│   │   ├── ShowMessage.js
+│   │   ├── SendEmail.js
+│   ├── /firebase
+│   │   └── firebaseConfig.js (Firebase initialization file)
+│   ├── App.js
+│   ├── index.js
+├── .env
+├── package.json
+└── README.md
+```
+
+## Firebase Functions (Optional)
+
+If you plan to use **Firebase Functions** for email sending or other backend logic, you can set up Firebase Functions in your project:
+
+1. Initialize Firebase Functions in your project:
+
+   ```bash
+   firebase init functions
+   ```
+
+2. Implement your backend logic in the `functions` folder and deploy it using:
+
+   ```bash
+   firebase deploy --only functions
+   ```
+
+## Known Issues
+
+- Ensure that Firebase rules are configured correctly for reading and writing data.
+- Email sending may require a custom backend if using services like **Nodemailer** or Firebase Functions.
+- Firestore data read/write limits may apply, depending on the Firebase plan you're using.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+For any inquiries or suggestions, feel free to open an issue in this repository.
+
+---
